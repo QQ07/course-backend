@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const app = express();
 const cors = require("cors");
+require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
@@ -50,8 +51,9 @@ const authenticateJwt = (req, res, next) => {
   }
 };
 
-mongoose.connect('mongodb+srv://vrohan:hkuN8wsxoQ2HbPnO@courseapp.unuolz5.mongodb.net/coursesNew');
-
+const DB_CONNECT = process.env.DB_CONNECT;
+// console.log(DB_CONNECT)
+mongoose.connect(DB_CONNECT)
 app.get("/admin/me" , authenticateJwt,(req,res)=>{
   res.json({
     username:req.user.username,
