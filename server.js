@@ -54,6 +54,9 @@ const authenticateJwt = (req, res, next) => {
 const DB_CONNECT = process.env.DB_CONNECT;
 // console.log(DB_CONNECT)
 mongoose.connect(DB_CONNECT)
+app.get("/", (req,res)=>{
+  res.send("Hello World")
+})
 app.get("/admin/me" , authenticateJwt,(req,res)=>{
   res.json({
     username:req.user.username,
