@@ -188,7 +188,6 @@
 const express = require("express");
 const cors = require("cors");
 const adminRouter = require("./routes/admin");
-const userRouter = require("./routes/user");
 require("./database/connect");
 
 const app = express();
@@ -200,6 +199,5 @@ app.get("/", (req, res) => {
   res.send("Successfully connected to server.");
 });
 app.use("/admin", adminRouter);
-app.use("/users", userRouter);
 
 app.listen(3000, () => console.log("Server running on port 3000"));
