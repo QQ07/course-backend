@@ -142,6 +142,7 @@ app.get('/users/courses', authenticateJwt, async (req, res) => {
 });
 
 app.post('/users/courses/:courseId', authenticateJwt, async (req, res) => {
+  console.log(req.params.courseId);
   const course = await Course.findById(req.params.courseId);
   console.log(course);
   if (course) {
@@ -167,4 +168,4 @@ app.get('/users/purchasedCourses', authenticateJwt, async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(3000, () => console.log('Server running on port http://localhost:3000'));
